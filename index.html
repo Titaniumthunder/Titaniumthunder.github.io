@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Alex Salamati — Computer Engineer</title>
-<meta name="description" content="Alex Salamati — Computer Engineering student at Loyola Marymount University. CubeSat flight firmware, embedded systems, FPGA / RTL design, and robotics. Seeking Summer 2027 internships and new-grad roles." />
+<title>Alex Salamati · Computer Engineer</title>
+<meta name="description" content="Alex Salamati, Computer Engineering student at Loyola Marymount University. CubeSat flight firmware, embedded systems, FPGA / RTL design, and robotics. Seeking Summer 2027 internships and new-grad roles." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -320,16 +320,16 @@
   <div class="hero-status reveal">
     <span class="pulse"></span> Open to Summer 2027 internships, new-grad &amp; part-time roles
   </div>
-  <h1 class="reveal">Hi, I'm <span class="grad">Alex Salamati</span></h1>
+  <h1 class="reveal"><span class="grad">Alex Salamati</span></h1>
   <div class="hero-role reveal">Embedded Firmware <span class="sep">/</span> FPGA &amp; RTL <span class="sep">/</span> Robotics</div>
   <p class="lead reveal">
-    Computer Engineering student at Loyola Marymount University building systems where software meets physics —
+    Computer Engineering student at Loyola Marymount University building systems where software meets physics,
     from <strong style="color:var(--txt)">CubeSat flight firmware</strong> and FPGA datapaths to PID-controlled robots that
     sense, decide, and move. I work one verified change at a time, at a real lab bench.
   </p>
   <div class="pipeline reveal" aria-label="Verified CubeSat downlink signal path">
     <span class="ok">● DOWNLINK VERIFIED</span>
-    <span class="ar">—</span> <b>Pi payload</b>
+    <span class="ar">·</span> <b>Pi payload</b>
     <span class="ar">—I²C→</span> <b>dsPIC33 OBC</b>
     <span class="ar">—AX.25 @ 435 MHz→</span> <b>USRP / GNU Radio</b>
   </div>
@@ -351,15 +351,15 @@
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="eyebrow reveal">01 — About</div>
+  <div class="eyebrow reveal">01 · About</div>
   <h2 class="section-title reveal">Working where software meets physics</h2>
   <div class="about-grid">
     <div class="about-text reveal">
       <p>
         I'm a <strong>Computer Engineering</strong> student at Loyola Marymount University (minor in Computer
-        Science), graduating <strong>May 2027</strong>. I like the layer where software meets physics — where a
-        missing carriage return can silence a satellite and a semaphore released three lines too early corrupts
-        every message on the bus.
+        Science), graduating <strong>May 2027</strong>. I like the layer where software meets physics, the place
+        where a missing carriage return can silence a satellite and a semaphore released three lines too early
+        corrupts every message on the bus.
       </p>
       <p>
         Most recently I've been doing <strong>undergraduate research on LMU's CubeSat program under Dr. Gustavo
@@ -368,7 +368,7 @@
         learning manipulation from demonstrations, and a transistor-level op-amp.
       </p>
       <p>
-        I work hands-on — oscilloscope, logic analyzer, one verified change at a time. Off the clock I'm
+        I work hands-on: oscilloscope, logic analyzer, one verified change at a time. Off the clock I'm
         <strong>Vice President of the Additive Manufacturing Club</strong> and build with LMU's Robotics and IEEE chapters.
       </p>
     </div>
@@ -385,7 +385,7 @@
 
 <!-- RESEARCH -->
 <section id="research">
-  <div class="eyebrow reveal">02 — Research</div>
+  <div class="eyebrow reveal">02 · Research</div>
   <h2 class="section-title reveal">CubeSat communications subsystem</h2>
   <p class="section-sub reveal">Undergraduate research · LMU Electrical Engineering &amp; Computer Science · Advisor: Dr. Gustavo Vejarano.</p>
 
@@ -398,15 +398,15 @@
     <div class="date">May – Jun 2026 · C · Salvo RTOS · dsPIC33 · I²C · AX.25 · GNU Radio · USRP SDR</div>
     <p>
       Satellite-side firmware for an RF jamming-detection CubeSat. The mission: a <strong>Raspberry Pi payload</strong>
-      detects jamming attacks, and the satellite downlinks the evidence — attack type, frequency, and GPS location — to
+      detects jamming attacks, and the satellite downlinks the evidence (attack type, frequency, and GPS location) to
       a ground station. I own the full communications pipeline between the Pi payload, the dsPIC33 flight computer, and
       the EnduroSat UHF transceiver, building on a previous researcher's codebase.
     </p>
     <ul>
-      <li><b>Verified end-to-end downlink</b> — real jamming-detection JSON travels from the Pi over I²C to the OBC and transmits via AX.25 at 435 MHz (9.6 kbaud FSK) to a GNU Radio ground station on a USRP N2920.</li>
-      <li><b>Concurrency design</b> — multiple RTOS tasks (telemetry beacon, payload polling, uplink listener) share one I²C bus with a half-duplex transceiver. My binary-semaphore arbitration eliminated recurring freezes; the bug was the semaphore being released <em>between</em> 16-byte transfer chunks, letting other tasks corrupt messages mid-stream.</li>
-      <li><b>Cross-stack debugging</b> — isolated three independent faults via single-variable testing: a shared-buffer race condition, a missing carriage-return terminator against the ESTTC protocol spec, and a blocking GPS serial read starving the main loop (fixed with a background daemon thread and cached fix).</li>
-      <li><b>Protocol &amp; integrity</b> — CRC-32-validated telemetry beacons per the EnduroSat ESTTC protocol; uplink command handling in progress.</li>
+      <li><b>Verified end-to-end downlink:</b> real jamming-detection JSON travels from the Pi over I²C to the OBC and transmits via AX.25 at 435 MHz (9.6 kbaud FSK) to a GNU Radio ground station on a USRP N2920.</li>
+      <li><b>Concurrency design:</b> multiple RTOS tasks (telemetry beacon, payload polling, uplink listener) share one I²C bus with a half-duplex transceiver. My binary-semaphore arbitration eliminated recurring freezes; the bug was the semaphore being released <em>between</em> 16-byte transfer chunks, letting other tasks corrupt messages mid-stream.</li>
+      <li><b>Cross-stack debugging:</b> isolated three independent faults via single-variable testing: a shared-buffer race condition, a missing carriage-return terminator against the ESTTC protocol spec, and a blocking GPS serial read starving the main loop (fixed with a background daemon thread and cached fix).</li>
+      <li><b>Protocol &amp; integrity:</b> CRC-32-validated telemetry beacons per the EnduroSat ESTTC protocol; uplink command handling in progress.</li>
     </ul>
     <div class="metrics">
       <div class="metric"><span class="num">435 MHz</span><span class="lbl">UHF downlink</span></div>
@@ -426,24 +426,24 @@
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="eyebrow reveal">03 — Projects</div>
+  <div class="eyebrow reveal">03 · Projects</div>
   <h2 class="section-title reveal">Built at the bench, not just in simulation</h2>
   <p class="section-sub reveal">A selection of hardware-software projects, each taken end-to-end from design through verification. Status badges are honest.</p>
   <div class="proj-grid">
 
     <div class="proj reveal">
       <div class="proj-top">
-        <h3>SO-ARM101 Robot Arm — Imitation Learning</h3>
+        <h3>SO-ARM101 Robot Arm · Imitation Learning</h3>
         <span class="status wip">In Progress</span>
       </div>
       <div class="date">Apr 2026 – Present</div>
-      <p>A 6-DOF manipulator learning pick-and-place from human demonstrations. I assembled and calibrated the arm (3D-printed structure, serial-bus servos) and got leader-follower teleoperation working through the LeRobot framework — moving the leader by hand drives the follower in real time. Now collecting demos to train an ACT (Action Chunking with Transformers) policy for autonomous manipulation.</p>
+      <p>A 6-DOF manipulator learning pick-and-place from human demonstrations. I assembled and calibrated the arm (3D-printed structure, serial-bus servos) and got leader-follower teleoperation working through the LeRobot framework: moving the leader by hand drives the follower in real time. Now collecting demos to train an ACT (Action Chunking with Transformers) policy for autonomous manipulation.</p>
       <div class="metrics">
         <div class="metric"><span class="num">6-DOF</span><span class="lbl">Manipulator</span></div>
         <div class="metric"><span class="num">LeRobot</span><span class="lbl">Teleop pipeline</span></div>
         <div class="metric"><span class="num">ACT</span><span class="lbl">Policy (training)</span></div>
       </div>
-      <div class="lesson"><b>What this taught me</b><span>Calibration is everything. A policy is only as good as its demonstrations — and demos are only as good as the hardware's repeatability.</span></div>
+      <div class="lesson"><b>What this taught me</b><span>Calibration is everything. A policy is only as good as its demonstrations, and demos are only as good as the hardware's repeatability.</span></div>
       <div class="tags-row"><span>Python</span><span>LeRobot</span><span>ACT</span><span>Imitation Learning</span><span>3D Printing</span></div>
     </div>
 
@@ -453,7 +453,7 @@
         <span class="status wip">In Progress</span>
       </div>
       <div class="date">Mar 2026 – Present</div>
-      <p>A closed-loop, 3-DOF servo platform that balances a ball by tilting in real time. An OpenCV vision pipeline estimates ball position and velocity at 30+ FPS and feeds a PID controller driving servo PWM through an Arduino — perception to actuation in one loop. Currently tuning PID gains with step-response analysis to minimize overshoot.</p>
+      <p>A closed-loop, 3-DOF servo platform that balances a ball by tilting in real time. An OpenCV vision pipeline estimates ball position and velocity at 30+ FPS and feeds a PID controller driving servo PWM through an Arduino, closing the loop from perception to actuation. Currently tuning PID gains with step-response analysis to minimize overshoot.</p>
       <div class="metrics">
         <div class="metric"><span class="num">30+ FPS</span><span class="lbl">Vision loop</span></div>
         <div class="metric"><span class="num">3-DOF</span><span class="lbl">Servo platform</span></div>
@@ -469,13 +469,13 @@
         <span class="status done">Complete</span>
       </div>
       <div class="date">Mar – May 2026</div>
-      <p>A complete 32-bit single-cycle MIPS processor designed from scratch in SystemVerilog — ALU, control unit, register file, instruction memory, and full datapath — synthesized on a Xilinx FPGA. Verification was the real work: directed testbenches across R/I/J-type instructions, RTL simulation, and timing analysis confirming setup/hold constraints.</p>
+      <p>A complete 32-bit single-cycle MIPS processor designed from scratch in SystemVerilog: ALU, control unit, register file, instruction memory, and full datapath, synthesized on a Xilinx FPGA. Verification was the real work: directed testbenches across R/I/J-type instructions, RTL simulation, and timing analysis confirming setup/hold constraints.</p>
       <div class="metrics">
         <div class="metric"><span class="num">15+</span><span class="lbl">Instructions verified</span></div>
         <div class="metric"><span class="num">R/I/J</span><span class="lbl">Type coverage</span></div>
         <div class="metric"><span class="num">FPGA</span><span class="lbl">Synthesized</span></div>
       </div>
-      <div class="lesson"><b>What this taught me</b><span>My testbenches caught control-signal bugs my eyes missed in the waveforms. Verification isn't a chore after design — it is design.</span></div>
+      <div class="lesson"><b>What this taught me</b><span>My testbenches caught control-signal bugs my eyes missed in the waveforms. Verification isn't a chore after design: it is design.</span></div>
       <div class="tags-row"><span>SystemVerilog</span><span>FPGA</span><span>Vivado</span><span>RTL Design</span><span>Static Timing</span></div>
     </div>
 
@@ -491,7 +491,7 @@
         <div class="metric"><span class="num">&gt;45°</span><span class="lbl">Phase margin</span></div>
         <div class="metric"><span class="num">2-stage</span><span class="lbl">Topology</span></div>
       </div>
-      <div class="lesson"><b>What this taught me</b><span>Stability isn't free — every bit of gain wants to oscillate, and compensation is the negotiation.</span></div>
+      <div class="lesson"><b>What this taught me</b><span>Stability isn't free: every bit of gain wants to oscillate, and compensation is the negotiation.</span></div>
       <div class="tags-row"><span>Analog IC</span><span>Multisim</span><span>Miller Compensation</span><span>Bode Plots</span></div>
     </div>
 
@@ -515,9 +515,9 @@
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="eyebrow reveal">04 — Skills</div>
+  <div class="eyebrow reveal">04 · Skills</div>
   <h2 class="section-title reveal">Technical toolkit</h2>
-  <p class="section-sub reveal">A spread across firmware, silicon, and the lab bench — the layers I move between to take an idea from schematic to working system.</p>
+  <p class="section-sub reveal">A spread across firmware, silicon, and the lab bench: the layers I move between to take an idea from schematic to working system.</p>
   <div class="skills-grid">
     <div class="skill-card reveal">
       <div class="ic">💻</div>
@@ -544,12 +544,12 @@
 
 <!-- EXPERIENCE -->
 <section id="experience">
-  <div class="eyebrow reveal">05 — Experience &amp; Leadership</div>
+  <div class="eyebrow reveal">05 · Experience &amp; Leadership</div>
   <h2 class="section-title reveal">Where I've worked</h2>
   <div class="timeline">
     <div class="tl-item reveal">
       <div class="tl-head">
-        <h3>Undergraduate Researcher — LMU CubeSat Program</h3>
+        <h3>Undergraduate Researcher · LMU CubeSat Program</h3>
         <span class="when">May – Jun 2026</span>
       </div>
       <div class="tl-org">LMU EECS · Advisor: Dr. Gustavo Vejarano</div>
@@ -570,7 +570,7 @@
     </div>
     <div class="tl-item reveal">
       <div class="tl-head">
-        <h3>Vice President — Additive Manufacturing Club</h3>
+        <h3>Vice President · Additive Manufacturing Club</h3>
         <span class="when">2024 – Present</span>
       </div>
       <div class="tl-org">Loyola Marymount University</div>
@@ -581,12 +581,12 @@
     </div>
     <div class="tl-item reveal">
       <div class="tl-head">
-        <h3>Member — ROBO Robotics Club &amp; IEEE Student Chapter</h3>
+        <h3>Member · ROBO Robotics Club &amp; IEEE Student Chapter</h3>
         <span class="when">2023 – Present</span>
       </div>
       <div class="tl-org">Loyola Marymount University</div>
       <ul>
-        <li>Cross-disciplinary robotics builds — sensors, motors, embedded control; contributed to an autonomous ultrasonic obstacle-avoidance project.</li>
+        <li>Cross-disciplinary robotics builds: sensors, motors, embedded control; contributed to an autonomous ultrasonic obstacle-avoidance project.</li>
       </ul>
     </div>
   </div>
@@ -594,11 +594,11 @@
 
 <!-- EDUCATION -->
 <section id="education">
-  <div class="eyebrow reveal">06 — Education</div>
+  <div class="eyebrow reveal">06 · Education</div>
   <h2 class="section-title reveal">Academics &amp; coursework</h2>
   <div class="edu-card reveal">
     <div class="deg">B.S. Computer Engineering · Minor in Computer Science</div>
-    <div class="uni">Loyola Marymount University — Los Angeles, CA</div>
+    <div class="uni">Loyola Marymount University · Los Angeles, CA</div>
     <div class="meta">Expected May 2027</div>
     <div class="course-label">Relevant Coursework</div>
     <div class="courses">
@@ -613,15 +613,16 @@
       <span>Differential Equations &amp; Linear Algebra</span>
       <span>Probability &amp; Statistics</span>
       <span>Junior Lab I &amp; II</span>
+      <span>Machine Learning</span>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="contact">
-  <div class="eyebrow reveal">07 — Contact</div>
+  <div class="eyebrow reveal">07 · Contact</div>
   <h2 class="reveal">Let's build something</h2>
-  <p class="reveal">Graduating <strong>May 2027</strong> and looking for <strong>embedded, FPGA, test, and robotics engineering roles</strong> — plus part-time work during the school year. If you're building something with real hardware in the loop, I'd love to talk.</p>
+  <p class="reveal">Graduating <strong>May 2027</strong> and looking for <strong>embedded, FPGA, test, and robotics engineering roles</strong>, plus part-time work during the school year. If you're building something with real hardware in the loop, I'd love to talk.</p>
   <div class="contact-row reveal">
     <a href="mailto:Alexsal621836@gmail.com" class="btn btn-primary">✉ Email me</a>
     <a href="https://github.com/Titaniumthunder" target="_blank" rel="noopener" class="btn btn-ghost">⌨ GitHub</a>
