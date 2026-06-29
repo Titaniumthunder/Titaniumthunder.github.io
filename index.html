@@ -405,16 +405,17 @@
       the EnduroSat UHF transceiver, building on a previous researcher's codebase.
     </p>
     <ul>
-      <li><b>Verified end-to-end downlink:</b> real jamming-detection JSON travels from the Pi over I²C to the OBC and transmits via AX.25 at 435 MHz (9.6 kbaud FSK) to a GNU Radio ground station on a USRP N2920.</li>
-      <li><b>Concurrency design:</b> multiple RTOS tasks (telemetry beacon, payload polling, uplink listener) share one I²C bus with a half-duplex transceiver. My binary-semaphore arbitration eliminated recurring freezes; the bug was the semaphore being released <em>between</em> 16-byte transfer chunks, letting other tasks corrupt messages mid-stream.</li>
+      <li><b>Verified end-to-end downlink:</b> three telemetry types (LOG, TEL, IMG) — jamming-detection JSON carrying attack type, frequency, and GPS fix — travel from the Pi over I²C to the OBC and transmit via AX.25 at 435 MHz (9.6 kbaud FSK) to a GNU Radio ground station on a USRP N2920.</li>
+      <li><b>Concurrency design:</b> multiple RTOS tasks (telemetry beacon, payload polling, uplink listener) share one I²C bus with a half-duplex transceiver. My binary-semaphore arbitration eliminated recurring system freezes — <em>zero recurrence across all subsequent FlatSat runs</em> — after root-causing the semaphore being released between 16-byte transfer chunks, letting other tasks corrupt messages mid-stream.</li>
       <li><b>Cross-stack debugging:</b> isolated three independent faults via single-variable testing: a shared-buffer race condition, a missing carriage-return terminator against the ESTTC protocol spec, and a blocking GPS serial read starving the main loop (fixed with a background daemon thread and cached fix).</li>
-      <li><b>Protocol &amp; integrity:</b> CRC-32-validated telemetry beacons per the EnduroSat ESTTC protocol; uplink command handling in progress.</li>
+      <li><b>Byte-survival study:</b> assigned by Dr. Vejarano — confirmed a 97-byte payload ceiling and proved 0x00 truncation through the I²C C-string interface, establishing mandatory hex-encoding for image data to survive the full Pi → OBC → RF path.</li>
+      <li><b>Protocol &amp; integrity:</b> CRC-32-validated telemetry beacons per the EnduroSat ESTTC protocol.</li>
     </ul>
     <div class="metrics">
       <div class="metric"><span class="num">435 MHz</span><span class="lbl">UHF downlink</span></div>
-      <div class="metric"><span class="num">9.6 kbaud</span><span class="lbl">AX.25 FSK</span></div>
-      <div class="metric"><span class="num">CRC-32</span><span class="lbl">Telemetry integrity</span></div>
-      <div class="metric"><span class="num">3 faults</span><span class="lbl">Isolated &amp; fixed</span></div>
+      <div class="metric"><span class="num">LOG·TEL·IMG</span><span class="lbl">3 telemetry types</span></div>
+      <div class="metric"><span class="num">0 freezes</span><span class="lbl">after fix</span></div>
+      <div class="metric"><span class="num">97-byte</span><span class="lbl">payload ceiling</span></div>
     </div>
     <div class="lesson">
       <b>What this taught me</b>
@@ -529,7 +530,7 @@
     <div class="skill-card reveal">
       <div class="ic">🛰️</div>
       <h3>Embedded &amp; Protocols</h3>
-      <div class="tags"><span>RTOS (Salvo)</span><span>dsPIC33</span><span>Raspberry Pi</span><span>Arduino</span><span>I²C</span><span>SPI</span><span>UART</span><span>PWM</span><span>AX.25</span><span>CRC</span><span>Bare-metal firmware</span></div>
+      <div class="tags"><span>RTOS (Salvo)</span><span>dsPIC33</span><span>Raspberry Pi</span><span>Arduino</span><span>I²C</span><span>SPI</span><span>UART</span><span>PWM</span><span>AX.25</span><span>CRC</span><span>NMEA / GPS</span><span>Bare-metal firmware</span></div>
     </div>
     <div class="skill-card reveal">
       <div class="ic">🛠️</div>
@@ -539,7 +540,7 @@
     <div class="skill-card reveal">
       <div class="ic">🧠</div>
       <h3>Concepts</h3>
-      <div class="tags"><span>Real-time systems</span><span>Semaphores &amp; scheduling</span><span>PID Control</span><span>Computer Vision</span><span>Imitation Learning</span><span>RTL Design</span><span>Static Timing Analysis</span><span>RF Communications</span></div>
+      <div class="tags"><span>Real-time systems</span><span>Semaphores &amp; scheduling</span><span>Finite State Machines</span><span>PID Control</span><span>Computer Vision</span><span>Imitation Learning</span><span>RTL Design</span><span>Static Timing Analysis</span><span>RF Communications</span></div>
     </div>
   </div>
 </section>
@@ -613,7 +614,6 @@
     <div class="courses">
       <span>Data Structures &amp; Algorithms</span>
       <span>Computer Architecture (SystemVerilog)</span>
-      <span>Embedded Systems</span>
       <span>Microprocessors &amp; Microcontrollers</span>
       <span>Circuits I &amp; II</span>
       <span>Electronics</span>
@@ -622,7 +622,12 @@
       <span>Differential Equations &amp; Linear Algebra</span>
       <span>Probability &amp; Statistics</span>
       <span>Junior Lab I &amp; II</span>
+    </div>
+    <div class="course-label" style="margin-top:22px">Fall 2026 · In Progress</div>
+    <div class="courses">
+      <span>Embedded Systems</span>
       <span>Machine Learning</span>
+      <span>Senior Capstone</span>
     </div>
   </div>
 </section>
