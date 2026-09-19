@@ -4,7 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Alex Salamati · Computer Engineer</title>
-<meta name="description" content="Alex Salamati, Computer Engineering student at Loyola Marymount University. CubeSat flight firmware, embedded systems, FPGA / RTL design, and robotics. Seeking Summer 2027 internships and new-grad roles." />
+<meta name="description" content="Alex Salamati, Computer Engineering senior at Loyola Marymount University (May 2027). RTL design and AI hardware (systolic-array accelerator capstone), CubeSat flight firmware, and robotics. Seeking 2027 new-grad full-time roles." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://titaniumthunder.github.io/" />
+<meta property="og:title" content="Alex Salamati · Computer Engineer" />
+<meta property="og:description" content="RTL &amp; AI hardware, robotics, and embedded systems. Building a quantized systolic-array AI accelerator; shipped CubeSat flight firmware verified over RF. Seeking 2027 new-grad roles." />
+<meta name="twitter:card" content="summary" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -295,6 +300,46 @@
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
   .reveal.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.pulse::after{animation:none}}
+  /* ---------- Hero pipelines (added Sep 2026) ---------- */
+  .pipes{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:32px}
+  .pipes .pipeline{margin-bottom:0}
+  .pipeline .now{color:var(--warn);font-weight:500}
+
+  /* ---------- Capstone ---------- */
+  .cap-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:28px;align-items:start;margin-bottom:22px}
+  @media(max-width:860px){.cap-grid{grid-template-columns:1fr}}
+  .rq{
+    border-left:2px solid var(--accent);background:rgba(76,194,255,.06);
+    border-radius:0 8px 8px 0;padding:11px 15px;
+  }
+  .feature p.rq{color:var(--txt);font-size:14.5px}
+  .rq b{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.8px;text-transform:uppercase;color:var(--accent);margin-bottom:4px;font-weight:500}
+  .diagram{margin:0;background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .diagram svg{display:block;width:100%;height:auto}
+  .diagram figcaption{font-size:12.5px;color:var(--faint);margin-top:10px;line-height:1.5}
+  .flow{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:18px}
+  @media(max-width:860px){.flow{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:520px){.flow{grid-template-columns:repeat(2,1fr)}}
+  .flow .st{font-size:12.5px;color:var(--faint);background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:9px 10px;line-height:1.35}
+  .flow .st span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--faint);margin-bottom:3px}
+  .flow .st.done{color:var(--muted);border-color:rgba(34,224,168,.35)}
+  .flow .st.done span{color:var(--accent-3)}
+  .flow .st.now{color:var(--txt);border-color:rgba(255,180,84,.6);background:rgba(255,180,84,.08)}
+  .flow .st.now span{color:var(--warn)}
+  .chiprow{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-bottom:18px}
+  .chiprow b{font-family:var(--mono);font-size:10.5px;letter-spacing:.8px;text-transform:uppercase;color:var(--faint);font-weight:500;margin-right:4px}
+  .chiprow span{font-family:var(--mono);font-size:11.5px;color:var(--muted);border:1px solid var(--line);padding:4px 9px;border-radius:6px}
+  .chiprow.learning{margin-top:18px;margin-bottom:0;background:var(--panel);border:1px dashed rgba(124,92,255,.45);border-radius:var(--radius);padding:16px 20px}
+  .chiprow.learning b{color:var(--accent-2)}
+
+  /* ---------- Phone gutters ---------- */
+  @media(max-width:600px){
+    section{padding-left:16px;padding-right:16px}
+    .feature{padding:24px 18px}
+    .diagram{padding:10px}
+    .feature .proj-top{flex-direction:column;align-items:flex-start;gap:8px}
+    .feature h3{font-size:20px}
+  }
 </style>
 </head>
 <body>
@@ -306,6 +351,7 @@
     <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
     <div class="nav-links" id="navLinks">
       <a href="#about">About</a>
+      <a href="#capstone">Capstone</a>
       <a href="#research">Research</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
@@ -318,35 +364,45 @@
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-status reveal">
-    <span class="pulse"></span> Open to Summer 2027 internships, new-grad &amp; part-time roles
+    <span class="pulse"></span> Open to 2027 new-grad full-time roles · Graduating May 2027
   </div>
   <h1 class="reveal"><span class="grad">Alex Salamati</span></h1>
-  <div class="hero-role reveal">Embedded Firmware <span class="sep">/</span> FPGA &amp; RTL <span class="sep">/</span> Robotics</div>
+  <div class="hero-role reveal">RTL &amp; AI Hardware <span class="sep">/</span> Robotics <span class="sep">/</span> Embedded Systems</div>
   <p class="lead reveal">
-    Computer Engineering student at Loyola Marymount University building systems where software meets physics,
-    from <strong style="color:var(--txt)">CubeSat flight firmware</strong> and FPGA datapaths to PID-controlled robots that
-    sense, decide, and move. I work one verified change at a time, at a real lab bench.
+    Computer Engineering senior at Loyola Marymount University. This year I own the RTL and architecture of a
+    <strong style="color:var(--txt)">quantized systolic-array AI accelerator</strong>, our capstone chip going from Verilog
+    to FPGA to a sky130 layout. This summer I wrote <strong style="color:var(--txt)">CubeSat flight firmware</strong>
+    verified over a live 435 MHz RF link. I work one verified change at a time, at a real lab bench.
   </p>
-  <div class="pipeline reveal" aria-label="Verified CubeSat downlink signal path">
-    <span class="ok">● DOWNLINK VERIFIED</span>
-    <span class="ar">·</span> <b>Pi payload</b>
-    <span class="ar">—I²C→</span> <b>dsPIC33 OBC</b>
-    <span class="ar">—AX.25 @ 435 MHz→</span> <b>USRP / GNU Radio</b>
+  <div class="pipes reveal">
+    <div class="pipeline" aria-label="Capstone design flow, in progress">
+      <span class="now">● NOW BUILDING</span>
+      <span class="ar">·</span> <b>Verilog RTL</b>
+      <span class="ar">→</span> <b>golden-model verify</b>
+      <span class="ar">→</span> <b>FPGA</b>
+      <span class="ar">→</span> <b>OpenLane / sky130 GDSII</b>
+    </div>
+    <div class="pipeline" aria-label="Verified CubeSat RF link">
+      <span class="ok">● RF LINK VERIFIED</span>
+      <span class="ar">·</span> <b>Pi payload</b>
+      <span class="ar">—I²C→</span> <b>dsPIC33 OBC</b>
+      <span class="ar">—AX.25 @ 435 MHz→</span> <b>USRP / GNU Radio</b>
+    </div>
   </div>
   <div class="btn-row reveal">
-    <a href="#research" class="btn btn-primary">See my research →</a>
+    <a href="#capstone" class="btn btn-primary">See what I'm building →</a>
     <a href="Alex_Salamati_Resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost">↓ Resume</a>
     <a href="#contact" class="btn btn-ghost">Get in touch</a>
   </div>
   <div class="tech-strip reveal">
+    <span class="chip">Verilog / SystemVerilog</span>
+    <span class="chip">FPGA (Vivado)</span>
+    <span class="chip">Computer Architecture</span>
     <span class="chip">C / C++</span>
     <span class="chip">Python</span>
-    <span class="chip">SystemVerilog</span>
     <span class="chip">RTOS (Salvo)</span>
-    <span class="chip">FPGA</span>
     <span class="chip">AX.25 / RF</span>
     <span class="chip">OpenCV</span>
-    <span class="chip">PID Control</span>
   </div>
 </section>
 
@@ -357,16 +413,21 @@
   <div class="about-grid">
     <div class="about-text reveal">
       <p>
-        I'm a <strong>Computer Engineering</strong> student at Loyola Marymount University (minor in Computer
+        I'm a <strong>Computer Engineering</strong> senior at Loyola Marymount University (minor in Computer
         Science), graduating <strong>May 2027</strong>. I like the layer where software meets physics, the place
         where a missing carriage return can silence a satellite and a semaphore released three lines too early
         corrupts every message on the bus.
       </p>
       <p>
-        Most recently I've been doing <strong>undergraduate research on LMU's CubeSat program under Dr. Gustavo
-        Vejarano</strong>, writing the satellite-side firmware for an RF jamming-detection mission and debugging it
-        on real flight hardware. Alongside it: a self-balancing robot, a MIPS processor on an FPGA, a robot arm
-        learning manipulation from demonstrations, and a transistor-level op-amp.
+        This year I own the <strong>RTL and architecture for our senior capstone</strong>: a folded, quantized
+        systolic-array accelerator built around the same multiply-accumulate operation behind GPU tensor cores,
+        carried from Verilog through FPGA bring-up to a sky130 chip layout. Before that, I completed
+        <strong>undergraduate research on LMU's CubeSat program under Dr. Gustavo Vejarano</strong>, writing the
+        satellite-side firmware for an RF jamming-detection mission and verifying it over a real RF link.
+      </p>
+      <p>
+        Alongside those: a MIPS processor on an FPGA, a robot arm learning manipulation from demonstrations,
+        a ball-balancing robot, and a transistor-level op-amp.
       </p>
       <p>
         I work hands-on: oscilloscope, logic analyzer, one verified change at a time. Off the clock I'm
@@ -378,44 +439,159 @@
       <div class="fact"><span class="k">University</span><span class="v">Loyola Marymount</span></div>
       <div class="fact"><span class="k">Degree</span><span class="v">B.S. Computer Eng. · Minor CS</span></div>
       <div class="fact"><span class="k">Graduating</span><span class="v">May 2027</span></div>
-      <div class="fact"><span class="k">Focus</span><span class="v">Embedded · FPGA · Robotics</span></div>
+      <div class="fact"><span class="k">Focus</span><span class="v">RTL · AI Hardware · Robotics</span></div>
+      <div class="fact"><span class="k">Seeking</span><span class="v">2027 new-grad, full-time</span></div>
       <div class="fact"><span class="k">GitHub</span><span class="v"><a href="https://github.com/Titaniumthunder" target="_blank" rel="noopener">@Titaniumthunder ↗</a></span></div>
       <div class="fact"><span class="k">LinkedIn</span><span class="v"><a href="https://www.linkedin.com/in/alexsalamati/" target="_blank" rel="noopener">in/alexsalamati ↗</a></span></div>
     </div>
   </div>
 </section>
 
+<!-- CAPSTONE -->
+<section id="capstone">
+  <div class="eyebrow reveal">02 · Now Building</div>
+  <h2 class="section-title reveal">An AI accelerator, from RTL to chip layout</h2>
+  <p class="section-sub reveal">Senior capstone · LMU Electrical Engineering &amp; Computer Science · Sep 2026 – Apr 2027 · 3-person team.</p>
+
+  <div class="feature reveal">
+    <div class="advisor">// my track: RTL &amp; architecture</div>
+    <div class="proj-top">
+      <h3>Folded, Quantized Systolic MAC Array Accelerator</h3>
+      <span class="status wip">In Progress</span>
+    </div>
+    <div class="date">Sep 2026 – Apr 2027 · Verilog · Python / NumPy · Icarus Verilog · GTKWave · Vivado · OpenLane · SkyWater sky130</div>
+    <div class="cap-grid">
+      <div>
+        <p>
+          A small AI accelerator chip: a <strong>systolic array of multiply-accumulate (MAC) units</strong> running
+          quantized matrix multiplication, the same core operation behind GPU tensor cores. Two choices keep it buildable
+          in two semesters: a <strong>folded</strong> array that reuses a small physical grid across cycles to act like a
+          larger one, and <strong>INT8 / INT4 quantization</strong> instead of floating point.
+        </p>
+        <p class="rq"><b>Research question</b>How do fold factor and operand bit-width trade off against chip area, power, timing, and accuracy?</p>
+        <ul>
+          <li><b>I own the RTL:</b> the processing-element datapath (each PE computes psum += a × w every cycle; activations flow across rows, partial sums flow down columns) and the folding-controller FSM that steps a small physical array through a larger logical one.</li>
+          <li><b>Built to be swept:</b> INT8 baseline plus an INT4 variant, with fold factor and bit-width as RTL parameters, so one codebase produces every design point in the study.</li>
+          <li><b>Full flow, as a team:</b> checked against a Python golden model, brought up on a Xilinx FPGA, then carried through OpenLane RTL-to-GDSII with DRC, LVS, and timing signoff. Teammates: James (verification, FPGA bring-up) and Marco (physical design, signoff).</li>
+        </ul>
+      </div>
+      <figure class="diagram">
+          <svg viewBox="0 0 400 268" role="img" aria-labelledby="sysT sysD" font-family="JetBrains Mono, ui-monospace, monospace">
+            <title id="sysT">Folded systolic MAC array</title>
+            <desc id="sysD">A 2 by 2 array of processing elements, each computing psum plus-equals a times w. Activations enter each row from the left and pass right; partial sums pass down each column. A fold controller FSM reuses the 2 by 2 array in four passes to compute a 4 by 4 logical array.</desc>
+            <defs>
+              <marker id="mA" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#4cc2ff"/></marker>
+              <marker id="mP" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#22e0a8"/></marker>
+              <marker id="mR" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#ffb454"/></marker>
+            </defs>
+            <!-- physical 2x2 array -->
+            <text x="48" y="30" font-size="12" fill="#9fb0c4">physical 2×2 PEs</text>
+            <g stroke="#0369a1" stroke-width="1.5" fill="#7dd3fc">
+              <rect x="48" y="48" width="56" height="56" rx="8"/>
+              <rect x="116" y="48" width="56" height="56" rx="8"/>
+              <rect x="48" y="116" width="56" height="56" rx="8"/>
+              <rect x="116" y="116" width="56" height="56" rx="8"/>
+            </g>
+            <g text-anchor="middle" fill="#082f49">
+              <text x="76" y="74" font-size="14" font-weight="700">PE</text><text x="76" y="91" font-size="11" fill="#0c4a6e">+= a·w</text>
+              <text x="144" y="74" font-size="14" font-weight="700">PE</text><text x="144" y="91" font-size="11" fill="#0c4a6e">+= a·w</text>
+              <text x="76" y="142" font-size="14" font-weight="700">PE</text><text x="76" y="159" font-size="11" fill="#0c4a6e">+= a·w</text>
+              <text x="144" y="142" font-size="14" font-weight="700">PE</text><text x="144" y="159" font-size="11" fill="#0c4a6e">+= a·w</text>
+            </g>
+            <!-- activations flow right -->
+            <g stroke="#4cc2ff" stroke-width="2" marker-end="url(#mA)">
+              <line x1="12" y1="76" x2="46" y2="76"/><line x1="104" y1="76" x2="115" y2="76"/>
+              <line x1="12" y1="144" x2="46" y2="144"/><line x1="104" y1="144" x2="115" y2="144"/>
+            </g>
+            <text x="14" y="68" font-size="12" fill="#4cc2ff">a₀</text>
+            <text x="14" y="136" font-size="12" fill="#4cc2ff">a₁</text>
+            <!-- partial sums flow down -->
+            <g stroke="#22e0a8" stroke-width="2" marker-end="url(#mP)">
+              <line x1="76" y1="104" x2="76" y2="115"/><line x1="144" y1="104" x2="144" y2="115"/>
+              <line x1="76" y1="172" x2="76" y2="198"/><line x1="144" y1="172" x2="144" y2="198"/>
+            </g>
+            <text x="110" y="194" font-size="12" text-anchor="middle" fill="#22e0a8">psum</text>
+            <!-- reuse arrow -->
+            <path d="M178 110 C 206 110, 210 84, 236 84" fill="none" stroke="#ffb454" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#mR)"/>
+            <text x="194" y="130" font-size="13" font-weight="700" fill="#ffb454">×4</text>
+            <!-- logical 4x4 array -->
+            <text x="240" y="30" font-size="12" fill="#9fb0c4">logical 4×4 array</text>
+            <g fill="none" stroke="#2a3a52" stroke-width="1">
+              <rect x="240" y="48" width="36" height="36"/><rect x="276" y="48" width="36" height="36"/><rect x="312" y="48" width="36" height="36"/><rect x="348" y="48" width="36" height="36"/>
+              <rect x="240" y="84" width="36" height="36"/><rect x="276" y="84" width="36" height="36"/><rect x="312" y="84" width="36" height="36"/><rect x="348" y="84" width="36" height="36"/>
+              <rect x="240" y="120" width="36" height="36"/><rect x="276" y="120" width="36" height="36"/><rect x="312" y="120" width="36" height="36"/><rect x="348" y="120" width="36" height="36"/>
+              <rect x="240" y="156" width="36" height="36"/><rect x="276" y="156" width="36" height="36"/><rect x="312" y="156" width="36" height="36"/><rect x="348" y="156" width="36" height="36"/>
+            </g>
+            <rect x="241" y="49" width="70" height="70" rx="4" fill="#7dd3fc" stroke="#0369a1" stroke-width="1.5"/>
+            <g fill="none" stroke="#4cc2ff" stroke-width="1.5" stroke-dasharray="4 3">
+              <rect x="313" y="49" width="70" height="70" rx="4"/>
+              <rect x="241" y="121" width="70" height="70" rx="4"/>
+              <rect x="313" y="121" width="70" height="70" rx="4"/>
+            </g>
+            <g text-anchor="middle" font-size="16" font-weight="700">
+              <text x="276" y="90" fill="#082f49">1</text>
+              <text x="348" y="90" fill="#9fb0c4">2</text>
+              <text x="276" y="162" fill="#9fb0c4">3</text>
+              <text x="348" y="162" fill="#9fb0c4">4</text>
+            </g>
+            <text x="240" y="212" font-size="12" fill="#ffb454">fold factor = 4</text>
+            <!-- fold controller drives the reuse -->
+            <line x1="206" y1="224" x2="206" y2="140" stroke="#a78bfa" stroke-width="2" stroke-dasharray="3 3"/>
+            <!-- fold controller -->
+            <rect x="12" y="226" width="376" height="34" rx="8" fill="#c4b5fd" stroke="#6d28d9" stroke-width="1.5"/>
+            <text x="200" y="248" font-size="12.5" font-weight="600" text-anchor="middle" fill="#2e1065">fold controller FSM · steps passes 1 to 4</text>
+          </svg>
+        <figcaption>Example at fold factor 4: a 2×2 physical PE array computes a 4×4 logical array in four passes, trading latency for area. The PE datapath and fold controller are my RTL.</figcaption>
+      </figure>
+    </div>
+    <div class="course-label">Progress</div>
+    <!-- To update: move class "now" to the current step and add "done" to finished ones. -->
+    <div class="flow" aria-label="Project progress">
+      <div class="st now"><span>Sep · now</span>Architecture spec</div>
+      <div class="st"><span>Oct – Dec</span>INT8 PE + fold FSM RTL</div>
+      <div class="st"><span>Nov – Jan</span>Verify vs golden model</div>
+      <div class="st"><span>Jan – Feb</span>INT4 variant + FPGA bring-up</div>
+      <div class="st"><span>Feb – Mar</span>Design-space sweep</div>
+      <div class="st"><span>Mar – Apr</span>Signoff + report</div>
+    </div>
+    <div class="chiprow"><b>Will measure</b><span>Area</span><span>Power</span><span>Fmax / timing slack</span><span>Cycles per matmul</span><span>INT4 vs INT8 accuracy loss</span></div>
+    <div class="lesson" style="margin-bottom:0"><b>Deliverable</b><span>A signoff-clean, reproducible sky130 layout and measured data showing where folding stops paying off. Fabrication depends on a shuttle slot that isn't confirmed yet, so the goal is a tape-out-ready design, not claimed silicon.</span></div>
+  </div>
+</section>
+
 <!-- RESEARCH -->
 <section id="research">
-  <div class="eyebrow reveal">02 · Research</div>
+  <div class="eyebrow reveal">03 · Research</div>
   <h2 class="section-title reveal">CubeSat communications subsystem</h2>
-  <p class="section-sub reveal">Undergraduate research · LMU Electrical Engineering &amp; Computer Science · Advisor: Dr. Gustavo Vejarano.</p>
+  <p class="section-sub reveal">Summer Undergraduate Research Program (SURP) · LMU Electrical Engineering &amp; Computer Science · Advisor: Dr. Gustavo Vejarano.</p>
 
   <div class="feature reveal">
     <div class="advisor">// satellite-side flight firmware</div>
     <div class="proj-top">
       <h3>RF Jamming-Detection CubeSat</h3>
-      <span class="status live">Downlink verified</span>
+      <span class="status live">Complete · RF link verified</span>
     </div>
-    <div class="date">May – Jun 2026 · C · Salvo RTOS · dsPIC33 · I²C · AX.25 · GNU Radio · USRP SDR</div>
+    <div class="date">May – Jul 2026 · C · Salvo RTOS · dsPIC33 · I²C · AX.25 · GNU Radio · USRP SDR</div>
     <p>
       Satellite-side firmware for an RF jamming-detection CubeSat. The mission: a <strong>Raspberry Pi payload</strong>
       detects jamming attacks, and the satellite downlinks the evidence (attack type, frequency, and GPS location) to
-      a ground station. I own the full communications pipeline between the Pi payload, the dsPIC33 flight computer, and
+      a ground station. I owned the full communications pipeline between the Pi payload, the dsPIC33 flight computer, and
       the EnduroSat UHF transceiver, building on a previous researcher's codebase.
     </p>
     <ul>
-      <li><b>Verified end-to-end downlink:</b> three telemetry types (LOG, TEL, IMG) — jamming-detection JSON carrying attack type, frequency, and GPS fix — travel from the Pi over I²C to the OBC and transmit via AX.25 at 435 MHz (9.6 kbaud FSK) to a GNU Radio ground station on a USRP N2920.</li>
-      <li><b>Concurrency design:</b> multiple RTOS tasks (telemetry beacon, payload polling, uplink listener) share one I²C bus with a half-duplex transceiver. My binary-semaphore arbitration eliminated recurring system freezes — <em>zero recurrence across all subsequent FlatSat runs</em> — after root-causing the semaphore being released between 16-byte transfer chunks, letting other tasks corrupt messages mid-stream.</li>
+      <li><b>Verified end-to-end downlink:</b> three telemetry types (LOG, TEL, IMG), including jamming-detection JSON carrying attack type, frequency, and GPS fix, travel from the Pi over I²C to the OBC and transmit via AX.25 at 435 MHz (9.6 kbaud FSK) to a GNU Radio ground station on a USRP N2920, with CRC-32-validated beacons per the EnduroSat ESTTC protocol.</li>
+      <li><b>Closed the loop over RF:</b> validated the on-demand command path end to end. A ground-station uplink command reaches the flight computer, which polls the Pi payload over I²C and downlinks the jamming report back to the ground station.</li>
+      <li><b>Concurrency design:</b> multiple RTOS tasks (telemetry beacon, payload polling, uplink listener) share one I²C bus with a half-duplex transceiver. My binary-semaphore arbitration eliminated recurring system freezes, with <em>zero recurrence across all subsequent FlatSat runs</em>. Root cause: the semaphore was being released between 16-byte transfer chunks, letting other tasks corrupt messages mid-stream.</li>
       <li><b>Cross-stack debugging:</b> isolated three independent faults via single-variable testing: a shared-buffer race condition, a missing carriage-return terminator against the ESTTC protocol spec, and a blocking GPS serial read starving the main loop (fixed with a background daemon thread and cached fix).</li>
-      <li><b>Byte-survival study:</b> assigned by Dr. Vejarano — confirmed a 97-byte payload ceiling and proved 0x00 truncation through the I²C C-string interface, establishing mandatory hex-encoding for image data to survive the full Pi → OBC → RF path.</li>
-      <li><b>Protocol &amp; integrity:</b> CRC-32-validated telemetry beacons per the EnduroSat ESTTC protocol.</li>
+      <li><b>Byte-survival study:</b> assigned by Dr. Vejarano, confirmed a 97-byte payload ceiling and proved 0x00 truncation through the I²C C-string interface, establishing mandatory hex-encoding for image data to survive the full Pi → OBC → RF path.</li>
+      <li><b>Handoff documentation:</b> wrote a 20-page technical manual (Rev 1.1) covering the full comms stack, PDU captures, and the semaphore and timing design, so the next researcher starts from a working baseline. Also submitted a SURP research abstract.</li>
     </ul>
     <div class="metrics">
-      <div class="metric"><span class="num">435 MHz</span><span class="lbl">UHF downlink</span></div>
+      <div class="metric"><span class="num">435 MHz</span><span class="lbl">UHF up + downlink</span></div>
       <div class="metric"><span class="num">LOG·TEL·IMG</span><span class="lbl">3 telemetry types</span></div>
       <div class="metric"><span class="num">0 freezes</span><span class="lbl">after fix</span></div>
       <div class="metric"><span class="num">97-byte</span><span class="lbl">payload ceiling</span></div>
+      <div class="metric"><span class="num">20 pages</span><span class="lbl">handoff manual</span></div>
     </div>
     <div class="lesson">
       <b>What this taught me</b>
@@ -429,10 +605,25 @@
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="eyebrow reveal">03 · Projects</div>
+  <div class="eyebrow reveal">04 · Projects</div>
   <h2 class="section-title reveal">Built at the bench, not just in simulation</h2>
   <p class="section-sub reveal">A selection of hardware-software projects, each taken end-to-end from design through verification. Status badges are honest.</p>
   <div class="proj-grid">
+    <div class="proj reveal">
+      <div class="proj-top">
+        <h3>MIPS Single-Cycle Processor</h3>
+        <span class="status done">Complete</span>
+      </div>
+      <div class="date">Mar – May 2026</div>
+      <p>A complete 32-bit single-cycle MIPS processor designed from scratch in SystemVerilog: ALU, control unit, register file, instruction memory, and full datapath, synthesized on a Xilinx FPGA. Verification was the real work: directed testbenches across R/I/J-type instructions, RTL simulation, and timing analysis confirming setup/hold constraints.</p>
+      <div class="metrics">
+        <div class="metric"><span class="num">15+</span><span class="lbl">Instructions verified</span></div>
+        <div class="metric"><span class="num">R/I/J</span><span class="lbl">Type coverage</span></div>
+        <div class="metric"><span class="num">FPGA</span><span class="lbl">Synthesized</span></div>
+      </div>
+      <div class="lesson"><b>What this taught me</b><span>My testbenches caught control-signal bugs my eyes missed in the waveforms. Verification isn't a chore after design: it is design.</span></div>
+      <div class="tags-row"><span>SystemVerilog</span><span>FPGA</span><span>Vivado</span><span>RTL Design</span><span>Static Timing</span></div>
+    </div>
 
     <div class="proj reveal">
       <div class="proj-top">
@@ -464,22 +655,6 @@
       </div>
       <div class="lesson"><b>What this taught me</b><span>Control theory on a whiteboard and control theory with a real camera's latency in the loop are two different subjects.</span></div>
       <div class="tags-row"><span>Python</span><span>OpenCV</span><span>PID</span><span>Arduino</span><span>Servos</span></div>
-    </div>
-
-    <div class="proj reveal">
-      <div class="proj-top">
-        <h3>MIPS Single-Cycle Processor</h3>
-        <span class="status done">Complete</span>
-      </div>
-      <div class="date">Mar – May 2026</div>
-      <p>A complete 32-bit single-cycle MIPS processor designed from scratch in SystemVerilog: ALU, control unit, register file, instruction memory, and full datapath, synthesized on a Xilinx FPGA. Verification was the real work: directed testbenches across R/I/J-type instructions, RTL simulation, and timing analysis confirming setup/hold constraints.</p>
-      <div class="metrics">
-        <div class="metric"><span class="num">15+</span><span class="lbl">Instructions verified</span></div>
-        <div class="metric"><span class="num">R/I/J</span><span class="lbl">Type coverage</span></div>
-        <div class="metric"><span class="num">FPGA</span><span class="lbl">Synthesized</span></div>
-      </div>
-      <div class="lesson"><b>What this taught me</b><span>My testbenches caught control-signal bugs my eyes missed in the waveforms. Verification isn't a chore after design: it is design.</span></div>
-      <div class="tags-row"><span>SystemVerilog</span><span>FPGA</span><span>Vivado</span><span>RTL Design</span><span>Static Timing</span></div>
     </div>
 
     <div class="proj reveal">
@@ -518,14 +693,14 @@
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="eyebrow reveal">04 · Skills</div>
+  <div class="eyebrow reveal">05 · Skills</div>
   <h2 class="section-title reveal">Technical toolkit</h2>
   <p class="section-sub reveal">A spread across firmware, silicon, and the lab bench: the layers I move between to take an idea from schematic to working system.</p>
   <div class="skills-grid">
     <div class="skill-card reveal">
       <div class="ic">💻</div>
       <h3>Languages</h3>
-      <div class="tags"><span>C</span><span>C++</span><span>Python</span><span>SystemVerilog</span><span>Verilog</span><span>MATLAB</span><span>Bash</span><span>MIPS Assembly</span></div>
+      <div class="tags"><span>Verilog</span><span>SystemVerilog</span><span>C</span><span>C++</span><span>Python</span><span>MATLAB</span><span>Bash</span><span>MIPS Assembly</span></div>
     </div>
     <div class="skill-card reveal">
       <div class="ic">🛰️</div>
@@ -540,27 +715,29 @@
     <div class="skill-card reveal">
       <div class="ic">🧠</div>
       <h3>Concepts</h3>
-      <div class="tags"><span>Real-time systems</span><span>Semaphores &amp; scheduling</span><span>Finite State Machines</span><span>PID Control</span><span>Computer Vision</span><span>Imitation Learning</span><span>RTL Design</span><span>Static Timing Analysis</span><span>RF Communications</span></div>
+      <div class="tags"><span>RTL Design</span><span>Finite State Machines</span><span>Static Timing Analysis</span><span>Computer Architecture</span><span>Real-time systems</span><span>Semaphores &amp; scheduling</span><span>PID Control</span><span>Computer Vision</span><span>Imitation Learning</span><span>RF Communications</span></div>
     </div>
   </div>
+  <div class="chiprow learning reveal"><b>Learning this year</b><span>Systolic arrays</span><span>INT8 / INT4 quantization</span><span>OpenLane RTL-to-GDSII</span><span>SkyWater sky130 PDK</span><span>Xilinx Zynq SoC · AXI · HLS</span><span>Machine learning</span></div>
 </section>
 
 <!-- EXPERIENCE -->
 <section id="experience">
-  <div class="eyebrow reveal">05 · Experience &amp; Leadership</div>
+  <div class="eyebrow reveal">06 · Experience &amp; Leadership</div>
   <h2 class="section-title reveal">Where I've worked</h2>
   <div class="timeline">
     <div class="tl-item reveal">
       <div class="tl-head">
         <h3>Undergraduate Researcher · LMU CubeSat Program</h3>
-        <span class="when">May – Jun 2026</span>
+        <span class="when">May – Jul 2026</span>
       </div>
-      <div class="tl-org">LMU EECS · Advisor: Dr. Gustavo Vejarano</div>
+      <div class="tl-org">LMU EECS · Summer Undergraduate Research Program · Advisor: Dr. Gustavo Vejarano</div>
       <ul>
         <li>Wrote and debugged satellite-side flight firmware (C, Salvo RTOS, dsPIC33) for an RF jamming-detection mission, owning the communications pipeline between the Pi payload, flight computer, and UHF transceiver.</li>
-        <li>Verified an end-to-end AX.25 downlink (435 MHz, 9.6 kbaud FSK) to a GNU Radio ground station running on a USRP SDR.</li>
+        <li>Verified an end-to-end AX.25 downlink (435 MHz, 9.6 kbaud FSK) to a GNU Radio ground station running on a USRP SDR, and validated the uplink command path that triggers a payload poll and downlink over RF.</li>
         <li>Designed binary-semaphore arbitration for a shared I²C bus across concurrent RTOS tasks, eliminating recurring system freezes.</li>
         <li>Isolated three independent firmware faults through single-variable testing on real flight hardware. See Research above.</li>
+        <li>Authored a 20-page technical manual (Rev 1.1) to hand the communications stack off to the next researcher.</li>
       </ul>
     </div>
     <div class="tl-item reveal">
@@ -604,7 +781,7 @@
 
 <!-- EDUCATION -->
 <section id="education">
-  <div class="eyebrow reveal">06 · Education</div>
+  <div class="eyebrow reveal">07 · Education</div>
   <h2 class="section-title reveal">Academics &amp; coursework</h2>
   <div class="edu-card reveal">
     <div class="deg">B.S. Computer Engineering · Minor in Computer Science</div>
@@ -625,16 +802,17 @@
     </div>
     <div class="course-label" style="margin-top:22px">Fall 2026 · In Progress</div>
     <div class="courses">
-      <span>Embedded Systems</span>
-      <span>Machine Learning</span>
-      <span>Senior Capstone</span>
+      <span>Embedded Systems (Xilinx Zynq SoC · AXI · HLS)</span>
+      <span>Machine Learning (graduate course)</span>
+      <span>Senior Lab: two-semester AI accelerator capstone</span>
+      <span>Senior Seminar</span>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="contact">
-  <div class="eyebrow reveal">07 · Contact</div>
+  <div class="eyebrow reveal">08 · Contact</div>
   <div class="contact-row reveal" style="margin-top:8px">
     <a href="mailto:Alexsal621836@gmail.com" class="btn btn-primary">✉ Email me</a>
     <a href="https://www.linkedin.com/in/alexsalamati/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn ↗</a>
@@ -646,7 +824,7 @@
 
 <footer>
   <div class="mono">© 2026 Alex Salamati · Los Angeles, CA</div>
-  <div style="margin-top:6px">Built by hand, debugged on a bench · Updated Jun 2026.</div>
+  <div style="margin-top:6px">Built by hand, debugged on a bench · Updated Sep 2026.</div>
 </footer>
 
 <script>
